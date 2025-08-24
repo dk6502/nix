@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "dylan-laptop"; # Define your hostname.
   # Pick only one of the below networking options.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -58,6 +58,7 @@
   };
 
   programs.firefox.enable = true;
+  programs.git.enable = true;
 
   environment.systemPackages = with pkgs; [
     mg # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
