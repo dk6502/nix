@@ -61,7 +61,7 @@
       user.name = "dkr6";
       user.email = "dylank@posteo.com";
       credential = {
-        helper = "manager";
+        helper = "libsecret";
         credentialStore = "secretservice";
       };
     };
