@@ -8,8 +8,9 @@
     nixosConfigurations = {
       dylan-laptop = nixpkgs.lib.nixosSystem {
         modules = [ 
-                   impermanence.nixosModules.impermanence
-                  ./configuration.nix 
+                  impermanence.nixosModules.impermanence
+                  ./desktop.nix
+                  ./dylan-laptop.nix
         ];
       };
     };
