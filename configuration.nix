@@ -61,7 +61,7 @@
       user.name = "dkr6";
       user.email = "dylank@posteo.com";
       credential = {
-        helper = "libsecret";
+        helper = "manager";
         credentialStore = "secretservice";
       };
     };
@@ -69,6 +69,7 @@
 
   environment.systemPackages = with pkgs; [
     wget
+    git-credential-manager
   ];
 
   system.stateVersion = "25.05"; # Did you read the comment?
