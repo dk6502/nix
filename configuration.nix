@@ -56,9 +56,14 @@
   programs.firefox.enable = true;
   programs.git = {
     enable = true;
+    pkg = pkgs.gitFull;
     config = {
       user.name = "dkr6";
       user.email = "dylank@posteo.com";
+      credential = {
+        helper = "manager";
+        credentialStore = "secretservice";
+      };
     };
   };
 
