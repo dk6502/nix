@@ -14,40 +14,40 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "rpool/local/root";
-      fsType = "zfs";
+    { device = "none";
+      fsType = "tmpfs";
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/7255c6d0-b455-402f-9551-0326f4620641";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/7255c6d0-b455-402f-9551-0326f4620641";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
+
+  fileSystems."/persist" =
+    { device = "/dev/disk/by-uuid/7255c6d0-b455-402f-9551-0326f4620641";
+      fsType = "btrfs";
+      options = [ "subvol=persist" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1C50-435E";
+    { device = "/dev/disk/by-uuid/F0FC-1EB1";
       fsType = "vfat";
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
-  fileSystems."/nix" =
-    { device = "rpool/local/nix";
-      fsType = "zfs";
-    };
-
-  fileSystems."/home" =
-    { device = "rpool/safe/home";
-      fsType = "zfs";
-    };
-
-  fileSystems."/persist" =
-    { device = "rpool/safe/persist";
-      fsType = "zfs";
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/3bc00e27-dded-441f-952c-bebfa5642512"; }
-    ];
+  swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.hostId = "36921e77";
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
