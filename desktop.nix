@@ -23,6 +23,7 @@
         ".wine"
         "Bitwig Studio"
         ".BitwigStudio"
+        ".config/vesktop"
       ];
     };
   };
@@ -57,7 +58,12 @@
       lockAll = true;
       settings = {
         "org/gnome/shell" = {
-          favorite-apps = [ "firefox.desktop" "alacritty.desktop" ];
+          favorite-apps = [ "firefox.desktop" "Alacritty.desktop" ];
+          enabled-extensions = with pkgs.gnomeExtensions; [
+            blur-my-shell.extensionUuid
+            gtk4-desktop-icons-ng-ding.extensionUuid
+            compiz-windows-effect.extensionUuid
+          ];
         };
         "org/gnome/desktop/interface" = {
           accent-color = "pink";
@@ -123,7 +129,12 @@
     wget
     git-credential-manager
     alacritty
-  ];
+    nautilus
+  ] ++ (with pkgs.gnomeExtensions; [
+    blur-my-shell
+    compiz-windows-effect
+    gtk4-desktop-icons-ng-ding
+  ]);
 
 
 
