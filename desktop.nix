@@ -43,15 +43,32 @@
     useXkbConfig = true; # use xkb.options in tty.
   };
 
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
-    elisa
-    gwenview
-    okular
-    kate
-    khelpcenter
+  services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
+  services.gnome.core-apps.enable = false;
+  programs.dconf.profiles.user.databases = [
+    {
+      lockAll = true;
+      settings = {
+        "org/gnome/shell" = {
+          favorite-apps = [ "firefox.desktop" "alacritty.desktop" ];
+        };
+        "org/gnome/desktop/interface" = {
+          accent-color = "pink";
+          color-scheme = "prefer-dark";
+          icon-theme = "Papirus-Dark";
+        };
+        "org/gnome/desktop/background" = {
+          picture-uri-dark = "file:///home/dylan/.local/share/wallpaper.jpg";
+        };
+      };
+    }
   ];
 
   security.rtkit.enable = true;
@@ -74,6 +91,7 @@
       wineWowPackages.stable
       qbittorrent
       papirus-icon-theme
+      whitesur-kde
     ];
     password = "7538";
   };
@@ -82,16 +100,9 @@
     enable = true;
     directory = "/home/dylan";
     files = {
-      ".config/kdedefaults/kdeglobals" = {
-        source = ./kdedefaults/kdeglobals;
-        clobber = true;
-      };
-      ".config/kdedefaults/plasmarc" = {
-        source = ./kdedefaults/plasmarc;
-        clobber = true;
-      };
       ".local/share/wallpaper.jpg".source = ./images/wallpaper.jpg;
     };
+    clobberFiles = true;
   };
 
   programs.firefox.enable = true;
