@@ -10,6 +10,8 @@
     ];
   };
 
+  nixpkgs.config.allowUnfree = true;
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -23,27 +25,34 @@
     font = "Lat2-Terminus16";
     useXkbConfig = true; # use xkb.options in tty.
   };
-
-  services.desktopManager.plasma6 = {
-    enable = true;
-  };
-
-  services.displayManager.sddm = {
-    enable = true;
-  };
+  
+  security.rtkit.enable = true;
 
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
 
+  services.desktopManager.plasma6 = {
+    enable = true;
+  };
+  services.displayManager.sddm.enable = true;
+
+
   services.libinput.enable = true;
 
   users.users.dylan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel"  "realtime" "audio" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
+      papirus-icon-theme
+      bitwig-studio
+      vesktop
+      yabridge
+      yabridgectl
+      wineWowPackages.stable
+      qbittorrent
     ];
     password = "7538";
   };
@@ -65,7 +74,10 @@
   environment.systemPackages = with pkgs; [
     wget
     git-credential-manager
+    alacritty
   ];
+
+
 
   system.stateVersion = "25.05"; # Did you read the comment?
 

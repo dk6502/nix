@@ -18,12 +18,6 @@
       fsType = "tmpfs";
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/7255c6d0-b455-402f-9551-0326f4620641";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
-    };
-
   fileSystems."/nix" =
     { device = "/dev/disk/by-uuid/7255c6d0-b455-402f-9551-0326f4620641";
       fsType = "btrfs";
