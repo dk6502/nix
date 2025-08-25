@@ -16,6 +16,13 @@
         "Documents"
         "Public"
         "Templates"
+        ".cache"
+        ".local"
+        ".mozilla"
+        ".vst3"
+        ".wine"
+        "Bitwig Studio"
+        ".BitwigStudio"
       ];
     };
   };
@@ -35,7 +42,18 @@
     font = "Lat2-Terminus16";
     useXkbConfig = true; # use xkb.options in tty.
   };
-  
+
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
+    elisa
+    gwenview
+    okular
+    kate
+    khelpcenter
+  ];
+
   security.rtkit.enable = true;
 
   services.pipewire = {
@@ -43,28 +61,37 @@
     pulse.enable = true;
   };
 
-  services.desktopManager.plasma6 = {
-    enable = true;
-  };
-  services.displayManager.sddm.enable = true;
-
-
   services.libinput.enable = true;
 
   users.users.dylan = {
     isNormalUser = true;
     extraGroups = [ "wheel"  "realtime" "audio" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      tree
-      papirus-icon-theme
       bitwig-studio
       vesktop
       yabridge
       yabridgectl
       wineWowPackages.stable
       qbittorrent
+      papirus-icon-theme
     ];
     password = "7538";
+  };
+
+  hjem.users.dylan = {
+    enable = true;
+    directory = "/home/dylan";
+    files = {
+      ".config/kdedefaults/kdeglobals" = {
+        source = ./kdedefaults/kdeglobals;
+        clobber = true;
+      };
+      ".config/kdedefaults/plasmarc" = {
+        source = ./kdedefaults/plasmarc;
+        clobber = true;
+      };
+      ".local/share/wallpaper.jpg".source = ./images/wallpaper.jpg;
+    };
   };
 
   programs.firefox.enable = true;

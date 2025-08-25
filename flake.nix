@@ -1,16 +1,21 @@
 {
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-25.05;
-    impermanence.url = github:nix-community/impermanence;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    impermanence.url = "github:nix-community/impermanence";
+    hjem = {
+        url = "github:feel-co/hjem";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, impermanence }: {
+  outputs = { self, nixpkgs, impermanence, hjem }: {
     nixosConfigurations = {
       dylan-laptop = nixpkgs.lib.nixosSystem {
         modules = [ 
-                  impermanence.nixosModules.impermanence
-                  ./desktop.nix
-                  ./dylan-laptop.nix
+          impermanence.nixosModules.impermanence
+          hjem.nixosModules.default
+          ./desktop.nix
+          ./dylan-laptop.nix
         ];
       };
     };
