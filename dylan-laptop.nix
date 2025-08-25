@@ -41,7 +41,7 @@
 
   networking = {
     useDHCP = lib.mkDefault true;
-    hostname = "dylan-laptop";
+    hostName = "dylan-laptop";
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
