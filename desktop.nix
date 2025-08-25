@@ -8,6 +8,14 @@
       "/etc/NetworkManager"
       "/var/lib/nixos"
     ];
+    users.dylan = {
+      directories = [
+        "Music"
+        "Pictures"
+        "Desktop"
+        "Documents"
+        "Public"
+        "Templates"
   };
 
   nixpkgs.config.allowUnfree = true;
