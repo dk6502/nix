@@ -16,6 +16,8 @@
         "Documents"
         "Public"
         "Templates"
+      ];
+    };
   };
 
   nixpkgs.config.allowUnfree = true;
