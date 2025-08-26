@@ -14,8 +14,9 @@
         modules = [ 
           impermanence.nixosModules.impermanence
           hjem.nixosModules.default
-          ./desktop.nix
-          ./dylan-laptop.nix
+          ./src/desktop.nix
+          ./src/dylan-laptop.nix
+	  ./src/system.nix	
         ];
       };
     };
