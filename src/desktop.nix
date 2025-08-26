@@ -24,7 +24,7 @@
         "Bitwig Studio"
         ".BitwigStudio"
         ".config/vesktop"
-        ".config/helix"
+        ".config/maestral"
       ];
     };
   };
@@ -45,7 +45,7 @@
       lockAll = true;
       settings = {
         "org/gnome/shell" = {
-          favorite-apps = [ "firefox.desktop" "Alacritty.desktop" ];
+          favorite-apps = [ "firefox.desktop" "footw.desktop" ];
           enabled-extensions = with pkgs.gnomeExtensions; [
             blur-my-shell.extensionUuid
             gtk4-desktop-icons-ng-ding.extensionUuid
@@ -59,6 +59,9 @@
         };
         "org/gnome/desktop/background" = {
           picture-uri-dark = "file:///home/dylan/.local/share/wallpaper.jpg";
+        };
+        "com/raggesilver/BlackBox" = {
+          theme-dark = "Catppuccin Mocha";
         };
       };
     }
@@ -85,11 +88,19 @@
       qbittorrent
       papirus-icon-theme
       prismlauncher
-    ];
+      helix
+      maestral
+      blackbox-terminal
+      zathura
+      thunderbird
+];
     directory = "/home/dylan";
     files = {
       ".local/share/wallpaper.jpg".source = ../images/wallpaper.jpg;
+      ".local/share/blackbox/schemes/catppuccin-mocha.json".source = ../config/catppuccin-mocha.json;
       ".config/helix/config.toml".source = ../config/helix.toml;
+      ".config/helix/languages.toml".source = ../config/languages.toml;
+      ".config/alacritty/alacritty.toml".source = ../config/alacritty.toml;
     };
     clobberFiles = true;
   };
@@ -99,14 +110,13 @@
   environment.systemPackages = with pkgs; [
     wget
     git-credential-manager
-    alacritty
     nautilus
+    papers
+    unzip
   ] ++ (with pkgs.gnomeExtensions; [
     blur-my-shell
     compiz-windows-effect
     gtk4-desktop-icons-ng-ding
-    neovim
-    neovide
   ]);
 }
 

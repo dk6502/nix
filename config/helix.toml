@@ -1,4 +1,4 @@
-theme = "onedark"
+theme = "catppuccin_mocha"
 
 [editor]
 line-number = "relative"
@@ -9,5 +9,5 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
-[editor.file-picker]
-hidden = false
+[editor.soft-wrap]
+enable = true
