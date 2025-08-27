@@ -29,6 +29,15 @@
     };
   };
 
+
+  boot.plymouth = {
+    enable = true;
+    theme = "matrix";
+    themePackages = with pkgs; [
+      plymouth-matrix-theme
+    ];
+  };
+  
   nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -91,8 +100,8 @@
       helix
       maestral
       blackbox-terminal
-      zathura
       thunderbird
+      winetricks
 ];
     directory = "/home/dylan";
     files = {
@@ -101,6 +110,7 @@
       ".config/helix/config.toml".source = ../config/helix.toml;
       ".config/helix/languages.toml".source = ../config/languages.toml;
       ".config/alacritty/alacritty.toml".source = ../config/alacritty.toml;
+      ".config/gnome-initial-setup-done".text = "yes";
     };
     clobberFiles = true;
   };
