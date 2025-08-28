@@ -25,6 +25,7 @@
         ".BitwigStudio"
         ".config/vesktop"
         ".config/maestral"
+        ".config/yabridgectl"
       ];
     };
   };
@@ -51,7 +52,6 @@
   services.gnome.core-apps.enable = false;
   programs.dconf.profiles.user.databases = [
     {
-      lockAll = true;
       settings = {
         "org/gnome/shell" = {
           favorite-apps = [ "firefox.desktop" "footw.desktop" ];

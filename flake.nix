@@ -3,8 +3,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     impermanence.url = "github:nix-community/impermanence";
     hjem = {
-        url = "github:feel-co/hjem";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:feel-co/hjem";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -16,7 +16,7 @@
           hjem.nixosModules.default
           ./src/desktop.nix
           ./src/dylan-laptop.nix
-	  ./src/system.nix	
+	        ./src/system.nix	
         ];
       };
     };
