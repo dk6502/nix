@@ -12,7 +12,7 @@
     };
   };
 
-  services.gnome.gnomeKeyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
   programs.bash.promptInit = ''
     PS1=' \w λ '
   '';
