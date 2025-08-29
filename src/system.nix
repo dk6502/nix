@@ -12,6 +12,7 @@
     };
   };
 
+  services.passSecretService.enable = true;
   programs.bash.promptInit = ''
     PS1=' \w λ '
   '';
