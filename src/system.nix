@@ -12,6 +12,10 @@
     };
   };
 
+  programs.bash.promptInit = ''
+    PS1=' \w λ '
+  '';
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   i18n.defaultLocale = "en_US.UTF-8";

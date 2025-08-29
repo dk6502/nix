@@ -1,0 +1,11 @@
+* {
+    background-color:      Black;
+    text-color:            White;
+    border-color:          White;
+    font:            "Times New Roman 12";
+}
+
+element selected {
+    background-color: White;
+	text-color: Black;
+}

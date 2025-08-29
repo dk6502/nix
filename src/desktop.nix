@@ -18,7 +18,6 @@
         "Templates"
         ".cache"
         ".local"
-        ".mozilla"
         ".vst3"
         ".wine"
         "Bitwig Studio"
@@ -26,6 +25,7 @@
         ".config/vesktop"
         ".config/maestral"
         ".config/yabridgectl"
+        ".config/chromium"
       ];
     };
   };
@@ -38,44 +38,44 @@
       plymouth-matrix-theme
     ];
   };
-  
-  nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-  services.displayManager.gdm.enable = true;
-  services.desktopManager.gnome.enable = true;
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
-  services.gnome.core-apps.enable = false;
   programs.dconf.profiles.user.databases = [
     {
+      lockAll = true; # prevents overriding
       settings = {
-        "org/gnome/shell" = {
-          favorite-apps = [ "firefox.desktop" "footw.desktop" ];
-          enabled-extensions = with pkgs.gnomeExtensions; [
-            blur-my-shell.extensionUuid
-            gtk4-desktop-icons-ng-ding.extensionUuid
-            compiz-windows-effect.extensionUuid
-          ];
-        };
         "org/gnome/desktop/interface" = {
-          accent-color = "pink";
           color-scheme = "prefer-dark";
-          icon-theme = "Papirus-Dark";
-        };
-        "org/gnome/desktop/background" = {
-          picture-uri-dark = "file:///home/dylan/.local/share/wallpaper.jpg";
-        };
-        "com/raggesilver/BlackBox" = {
-          theme-dark = "Catppuccin Mocha";
+          accent-color = "blue";
         };
       };
     }
   ];
+    
+  nixpkgs.config.allowUnfree = true;
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
+  services.displayManager.ly = {
+    enable = true;
+    settings = {
+      gameoflife_entropy_interval = 10;
+    };
+  };
+  
+  programs.labwc.enable = true;
+
+  qt = {
+    enable = true;
+    style = "kvantum";
+    platformTheme = "qt5ct";
+  };
+
+  fonts.packages = with pkgs; [
+    tamzen
+  ];
+
+  fonts.fontconfig.defaultFonts.sansSerif = [ "tamzen" ];
+  fonts.fontconfig.defaultFonts.monospace = [ "tamzen" ];
+  
   security.rtkit.enable = true;
 
   services.pipewire = {
@@ -99,34 +99,53 @@
       prismlauncher
       helix
       maestral
-      blackbox-terminal
-      thunderbird
       winetricks
-];
+      zathura
+      pcmanfm-qt
+      libsForQt5.qtstyleplugin-kvantum
+      ayu-theme-gtk
+  
+    ];
+  
+
     directory = "/home/dylan";
     files = {
-      ".local/share/wallpaper.jpg".source = ../images/wallpaper.jpg;
-      ".local/share/blackbox/schemes/catppuccin-mocha.json".source = ../config/catppuccin-mocha.json;
+      ".local/share/wallpaper.png".source = ../images/wallpaper.png;
       ".config/helix/config.toml".source = ../config/helix.toml;
       ".config/helix/languages.toml".source = ../config/languages.toml;
       ".config/alacritty/alacritty.toml".source = ../config/alacritty.toml;
-      ".config/gnome-initial-setup-done".text = "yes";
+      ".config/labwc/menu.xml".source = ../config/menu.xml;
+      ".config/labwc/autostart".source = ../config/autostart;
+      ".config/labwc/rc.xml".source = ../config/rc.xml;
+      ".config/rofi/config.rasi".source = ../config/rofi.rasi;
+      ".config/waybar/config".source = ../config/waybar.config;
+      ".config/waybar/style.css".source = ../config/waybar.css;
+      ".config/pcmanfm-qt/default/settings.conf".source = ../config/pcmanfm-qt.conf;
+      ".config/qt6ct/colors/DarkDream.colors".source = ../config/DarkDream.colors;
+      ".themes/Nightmare".source =../Nightmare;
+      ".icons/slick".source = ../slick;
+      ".config/Kvantum".source = ../config/Kvantum;
     };
     clobberFiles = true;
   };
 
-  programs.firefox.enable = true;
-
+  
   environment.systemPackages = with pkgs; [
     wget
     git-credential-manager
-    nautilus
-    papers
     unzip
-  ] ++ (with pkgs.gnomeExtensions; [
-    blur-my-shell
-    compiz-windows-effect
-    gtk4-desktop-icons-ng-ding
-  ]);
+    alacritty
+    sfwbar
+    swaybg
+    rofi-wayland
+    waybar
+    wl-clipboard
+    grim
+    slurp
+    gsettings-qt
+    gsettings-desktop-schemas
+    ungoogled-chromium
+    comma
+  ];
 }
 
