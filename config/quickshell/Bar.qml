@@ -24,7 +24,6 @@ Scope {
       ClockWidget {
         anchors.centerIn: parent
         color: "white"
-      
       }
     }
   }
