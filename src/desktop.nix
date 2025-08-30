@@ -78,6 +78,7 @@
   
   security.rtkit.enable = true;
 
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -103,7 +104,6 @@
       zathura
       pcmanfm-qt
       libsForQt5.qtstyleplugin-kvantum
-      ayu-theme-gtk
   
     ];
   
@@ -118,8 +118,7 @@
       ".config/labwc/autostart".source = ../config/autostart;
       ".config/labwc/rc.xml".source = ../config/rc.xml;
       ".config/rofi/config.rasi".source = ../config/rofi.rasi;
-      ".config/waybar/config".source = ../config/waybar.config;
-      ".config/waybar/style.css".source = ../config/waybar.css;
+      ".config/quickshell".source = ../config/quickshell;
       ".config/pcmanfm-qt/default/settings.conf".source = ../config/pcmanfm-qt.conf;
       ".config/qt6ct/colors/DarkDream.colors".source = ../config/DarkDream.colors;
       ".themes/Nightmare".source =../Nightmare;
@@ -132,13 +131,13 @@
   
   environment.systemPackages = with pkgs; [
     wget
+    quickshell
     git-credential-manager
     unzip
     alacritty
     sfwbar
     swaybg
     rofi-wayland
-    waybar
     wl-clipboard
     grim
     slurp
