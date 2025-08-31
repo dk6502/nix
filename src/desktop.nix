@@ -50,7 +50,7 @@
       };
     }
   ];
-    
+
   nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
@@ -60,7 +60,7 @@
       gameoflife_entropy_interval = 10;
     };
   };
-  
+
   programs.labwc.enable = true;
 
   qt = {
@@ -75,7 +75,7 @@
 
   fonts.fontconfig.defaultFonts.sansSerif = [ "tamzen" ];
   fonts.fontconfig.defaultFonts.monospace = [ "tamzen" ];
-  
+
   security.rtkit.enable = true;
 
 
@@ -98,15 +98,22 @@
       qbittorrent
       papirus-icon-theme
       prismlauncher
-      helix
       maestral
       winetricks
       zathura
       pcmanfm-qt
       libsForQt5.qtstyleplugin-kvantum
-  
+      mako
+      qjackctl
+      tidal-hifi
+      helix
+      zed-editor
+      zed-discord-presence
+      arrpc
+      iosevka
+      nil
     ];
-  
+
 
     directory = "/home/dylan";
     files = {
@@ -128,7 +135,7 @@
     clobberFiles = true;
   };
 
-  
+
   environment.systemPackages = with pkgs; [
     wget
     quickshell
@@ -147,4 +154,3 @@
     comma
   ];
 }
-
