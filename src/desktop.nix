@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   environment.persistence."/persist" = {
@@ -30,7 +35,6 @@
     };
   };
 
-
   boot.plymouth = {
     enable = true;
     theme = "matrix";
@@ -52,7 +56,7 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   services.displayManager.ly = {
     enable = true;
@@ -77,7 +81,6 @@
   fonts.fontconfig.defaultFonts.monospace = [ "tamzen" ];
 
   security.rtkit.enable = true;
-
 
   services.pipewire = {
     enable = true;
@@ -107,13 +110,11 @@
       qjackctl
       tidal-hifi
       helix
-      zed-editor
-      zed-discord-presence
       arrpc
       iosevka
       nil
+      nixd
     ];
-
 
     directory = "/home/dylan";
     files = {
@@ -128,13 +129,12 @@
       ".config/quickshell".source = ../config/quickshell;
       ".config/pcmanfm-qt/default/settings.conf".source = ../config/pcmanfm-qt.conf;
       ".config/qt6ct/colors/DarkDream.colors".source = ../config/DarkDream.colors;
-      ".themes/Nightmare".source =../Nightmare;
+      ".themes/Nightmare".source = ../Nightmare;
       ".icons/slick".source = ../slick;
       ".config/Kvantum".source = ../config/Kvantum;
     };
     clobberFiles = true;
   };
-
 
   environment.systemPackages = with pkgs; [
     wget
