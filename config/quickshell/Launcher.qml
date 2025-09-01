@@ -3,29 +3,37 @@ import Quickshell.Wayland
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
-PopupWindow {
-    anchor.window: bar
-    anchor.rect.x: 0
-    anchor.rect.y: parentWindow.height
+PanelWindow {
     width: 250
     height: 300
     visible: false
+    anchors {
+        top: true
+        left: true
+    }
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
     Rectangle {
-        TextField {
+        TextField{
             id: search
             width: 250; height: 24
             focus: true
         } 
+    }
+    Rectangle {
+        width:250; height: 276
+        anchors.bottom: parent.bottom
         ScrollView {
-            height: 276
-            anchors.bottom: parent.bottom
+            anchors.fill: parent.fill
+            width: parent.width
+            height: parent.height
             ColumnLayout {
-                anchors.fill: parent
+                anchors.fill: parent.fill
+                width: parent.width
+                height: parent.height
                 Repeater {
                     model: DesktopEntries.applications.values
                     Rectangle {
-                        width: 250; height: 20
-                        required property DesktopEntry modelData
+                        width: parent.width; height: 24
                         Text {
                             text: modelData.name
                         }
