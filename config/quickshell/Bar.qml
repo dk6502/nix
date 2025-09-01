@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Wayland
 import QtQuick
 import QtQuick.Controls
 
@@ -12,7 +13,6 @@ Scope {
       required property var modelData
       screen: modelData
       id: bar
-      
       anchors {
         top: true
         left: true
