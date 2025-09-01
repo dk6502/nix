@@ -1,5 +1,6 @@
 import Quickshell
-import QtQuick.Effects
+import QtQuick
+import QtQuick.Controls
 
 Scope {
   // no more time object
@@ -10,6 +11,7 @@ Scope {
     PanelWindow {
       required property var modelData
       screen: modelData
+      id: bar
       
       anchors {
         top: true
@@ -18,12 +20,27 @@ Scope {
       }
 
       color: "#99000000"
-            
-      implicitHeight: 24
 
-      ClockWidget {
+      Launcher {
+        id: appLauncher
+      }
+                  
+      implicitHeight: 24
+      Row {
         anchors.centerIn: parent
-        color: "white"
+        ClockWidget {
+          color: "white"
+        }
+      }
+      Row {
+        anchors.left: parent.left
+        Rectangle {
+          width: 16; height: 16
+          MouseArea {
+            anchors.fill: parent
+            onClicked: appLauncher.visible = !appLauncher.visible
+          }
+        }
       }
     }
   }
