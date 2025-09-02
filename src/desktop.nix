@@ -31,6 +31,7 @@
         ".config/maestral"
         ".config/yabridgectl"
         ".config/chromium"
+        ".config/tidal-hifi]"
       ];
     };
   };
@@ -125,7 +126,6 @@
       ".config/labwc/menu.xml".source = ../config/menu.xml;
       ".config/labwc/autostart".source = ../config/autostart;
       ".config/labwc/rc.xml".source = ../config/rc.xml;
-      ".config/rofi/config.rasi".source = ../config/rofi.rasi;
       ".config/quickshell".source = ../config/quickshell;
       ".config/pcmanfm-qt/default/settings.conf".source = ../config/pcmanfm-qt.conf;
       ".config/qt6ct/colors/DarkDream.colors".source = ../config/DarkDream.colors;

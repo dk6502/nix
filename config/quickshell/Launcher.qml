@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Io
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
@@ -7,14 +8,15 @@ PanelWindow {
     width: 250
     height: 300
     visible: false
+    id: launcher
     anchors {
         top: true
         left: true
     }
-    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
     Rectangle {
         TextField{
-            id: search
+            id: searchField
             width: 250; height: 24
             focus: true
         } 
@@ -26,21 +28,25 @@ PanelWindow {
             anchors.fill: parent.fill
             width: parent.width
             height: parent.height
-            ColumnLayout {
-                anchors.fill: parent.fill
-                width: parent.width
-                height: parent.height
-                Repeater {
-                    model: DesktopEntries.applications.values
-                    Rectangle {
-                        width: parent.width; height: 24
-                        Text {
-                            text: modelData.name
-                        }
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: modelData.execute()
-                        }
+            ListView {
+                clip: true
+                model: ScriptModel {
+                    values: DesktopEntries.applications.values.map(x => x).filter(entry => {
+                        const search = searchField.text.toLowerCase();
+                        const name = entry.name.toLowerCase();
+                        return search.length ? name.indexOf(search) > -1 : true;
+                    })
+                }
+                delegate: MouseArea {
+                    width: 250
+                    height: 24
+                    Text {
+                        text: modelData.name
+                    }
+                    onClicked: {
+                        modelData.execute();
+                        launcher.visible = false;
+                        searchField.clear();
                     }
                 }
             }
