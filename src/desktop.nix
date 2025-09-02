@@ -31,7 +31,7 @@
         ".config/maestral"
         ".config/yabridgectl"
         ".config/chromium"
-        ".config/tidal-hifi]"
+        ".config/tidal-hifi"
       ];
     };
   };

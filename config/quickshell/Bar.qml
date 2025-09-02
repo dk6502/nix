@@ -19,7 +19,14 @@ Scope {
         right: true
       }
 
-      color: "#99000000"
+      color: "#FF0F0F0F"
+
+      Rectangle {
+        anchors.fill: parent
+        border.width: 1
+        border.color: "#FF010101"
+        color: "#00FFFFFF"
+      }
 
       Launcher {
         id: appLauncher
@@ -34,11 +41,14 @@ Scope {
       }
       Row {
         anchors.left: parent.left
-        Rectangle {
-          width: 16; height: 16
-          MouseArea {
-            anchors.fill: parent
-            onClicked: appLauncher.visible = !appLauncher.visible
+        MouseArea {
+          width: 26; height: 24
+          onClicked: appLauncher.visible = !appLauncher.visible
+
+          Image {
+            anchors.right: parent.right
+            height: 23; width: 23
+            source: Quickshell.iconPath("kmenu")
           }
         }
       }
