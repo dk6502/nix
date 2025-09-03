@@ -56,21 +56,11 @@ Scope {
           color: "white"
         }
       }
-      
-      MouseArea {
+      Row {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
-        height: 24; width: 52
-        Row {
-          layoutDirection: Qt.RightToLeft
-          anchors.centerIn: parent
-          spacing: 6
-          PowerWidget{
-            id: powerWidget
-          }
-          SoundWidget {
-            anchors.verticalCenter: parent.verticalCenter
-          }
+        SysTray {
+          anchors.verticalCenter: verticalCenter
         }
       }
     }
