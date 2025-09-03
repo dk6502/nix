@@ -19,14 +19,20 @@ Scope {
         left: true
         right: true
       }
-
+      Keys.onPressed: event => {
+      	if (event.key == Qt.Key_Escape) appLauncher.visible = false;
+      	if (event.key == Qt.Key_F1) appLauncher.visible = !appLauncher.visible;
+      }
       color: "#FF0F0F0F"
 
       Rectangle {
         anchors.fill: parent
         border.width: 1
-        border.color: "#FF010101"
-        color: "#00FFFFFF"
+        border.color: "#FF171010"
+        gradient: Gradient {
+          GradientStop { position: 0.0; color: "#FF181818"}
+          GradientStop { position: 1.0; color: "#FF1F1F1F"}
+        }
       }
 
       Launcher {
@@ -53,7 +59,7 @@ Scope {
       Row {
         anchors.centerIn: parent
         ClockWidget {
-          color: "white"
+          color: "gainsboro"
         }
       }
       Row {
