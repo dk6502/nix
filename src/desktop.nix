@@ -144,7 +144,6 @@
     alacritty
     sfwbar
     swaybg
-    rofi-wayland
     wl-clipboard
     grim
     slurp
@@ -152,5 +151,7 @@
     gsettings-desktop-schemas
     ungoogled-chromium
     comma
+    mpv
+    feh
   ];
 }

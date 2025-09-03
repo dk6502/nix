@@ -13,6 +13,7 @@ Scope {
       required property var modelData
       screen: modelData
       id: bar
+      implicitHeight: 24
       anchors {
         top: true
         left: true
@@ -32,23 +33,43 @@ Scope {
         id: appLauncher
       }
                   
-      implicitHeight: 24
+      Row {
+        anchors.left: parent.left
+        anchors.verticalCenter: parent.verticalCenter
+        MouseArea {
+          width: 26; height: 24
+          onClicked: appLauncher.visible = !appLauncher.visible
+
+          Image {
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            height: 22; width: 22
+            source: Quickshell.iconPath("kmenu")
+          }
+        }
+      }
+
+      
       Row {
         anchors.centerIn: parent
         ClockWidget {
           color: "white"
         }
       }
-      Row {
-        anchors.left: parent.left
-        MouseArea {
-          width: 26; height: 24
-          onClicked: appLauncher.visible = !appLauncher.visible
-
-          Image {
-            anchors.right: parent.right
-            height: 23; width: 23
-            source: Quickshell.iconPath("kmenu")
+      
+      MouseArea {
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.right: parent.right
+        height: 24; width: 52
+        Row {
+          layoutDirection: Qt.RightToLeft
+          anchors.centerIn: parent
+          spacing: 6
+          PowerWidget{
+            id: powerWidget
+          }
+          SoundWidget {
+            anchors.verticalCenter: parent.verticalCenter
           }
         }
       }

@@ -13,7 +13,6 @@
     </font>
   </theme>
   <keyboard>
-    <keybind key="W-s"><action name="Execute" command="rofi -show drun" /></keybind>
     <keybind Key="W-S-s">
       <action name="Execute">
         <command>sh -c 'grim -g "$(slurp)" - | wl-copy'</command>
