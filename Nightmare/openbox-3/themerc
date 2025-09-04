@@ -37,8 +37,8 @@ menu.items.active.text.color: #ffffff
 #======================================
 
 window.*.title.bg: Gradient Vertical
-window.*.title.bg.color: #242a2e
-window.*.title.bg.colorTo: #30383d
+window.*.title.bg.color: #272c31
+window.*.title.bg.colorTo: #202428
 window.*.border.color: #3c454d
 window.*.handle.bg: raised
 window.*.handle.bg.color: #181818

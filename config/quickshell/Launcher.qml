@@ -20,8 +20,8 @@ PanelWindow {
         anchors.left: parent.left
         width: 40; height: parent.height
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#FF363f45"}
-            GradientStop { position: 1.0; color: "#FF242a2e"}
+            GradientStop { position: 0.0; color: colors.barColorTo}
+            GradientStop { position: 1.0; color: colors.barColor}
         }
         Text {
             FileView {
@@ -63,7 +63,7 @@ PanelWindow {
         anchors.left: osBox.right
         anchors.right: parent.right
         height: parent.height
-        color: "#FFF1F1F1"
+        color: colors.panelBgColor
         ScrollView {
             width: parent.width; height: parent.height - searchBox.height
             anchors.top: parent.top
@@ -89,7 +89,7 @@ PanelWindow {
                     Text {
                         id: text
                         text: " " + modelData.name
-                        color: "#FF1F1F1F"
+                        color: colors.panelTextColor
     
                     }
                     onClicked: {
@@ -128,7 +128,7 @@ PanelWindow {
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
                             text: "Exit"
-                            color: "#FF1F1F1F"
+                            color: colors.panelTextColor
                         }
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
@@ -155,7 +155,7 @@ PanelWindow {
                     background: Rectangle {
                         radius: 0
                         implicitWidth: parent.width
-                        border.color: "#FF1F1F1F"
+                        border.color: colors.panelTextColor
                     }
                 }
             }
@@ -164,6 +164,6 @@ PanelWindow {
     Rectangle {
         anchors.fill: parent
         color: "transparent"
-        border.color: "#FFD1D1D1"
+        border.color: colors.panelBorderColor
     }
 }

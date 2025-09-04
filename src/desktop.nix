@@ -56,6 +56,8 @@
     }
   ];
 
+  services.upower.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 

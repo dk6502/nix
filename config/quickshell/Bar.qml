@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Wayland
+import Quickshell.Services.UPower
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Effects
@@ -20,6 +21,10 @@ Scope {
         left: true
         right: true
       }
+
+      Colors {
+        id: colors
+      }
       Keys.onPressed: event => {
       	if (event.key == Qt.Key_Escape) appLauncher.visible = false;
       	if (event.key == Qt.Key_F1) appLauncher.visible = !appLauncher.visible;
@@ -29,10 +34,10 @@ Scope {
       Rectangle {
         anchors.fill: parent
         border.width: 1
-        border.color: "#FF3c454d"
+        border.color: colors.barBorderColor
         gradient: Gradient {
-          GradientStop { position: 0.0; color: "#FF242a2e"}
-          GradientStop { position: 1.0; color: "#FF30383d"}
+          GradientStop { position: 0.0; color: colors.barColor }
+          GradientStop { position: 1.0; color: colors.barColorTo}
         }
       }
 
@@ -86,7 +91,12 @@ Scope {
             anchors.centerIn: parent
             id: middle
             ClockWidget {
-              color: "SlateGray"
+              color: colors.barTextColor
+              font.pointSize: 30
+            }
+            Text {
+              text: " - " + UPower.displayDevice.timeToFull
+              color: colors.barTextColor
               font.pointSize: 30
             }
           }

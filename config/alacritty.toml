@@ -1,6 +1,7 @@
 # Colors (iTerm 2 default theme)
 
 [window]
+opacity = 0.85
 
 [font]
 size = 12
