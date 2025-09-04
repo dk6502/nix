@@ -69,11 +69,11 @@ Scope {
       Rectangle {
         anchors.right: parent.right
         height: 24
-        width: 100
+        width: 150
         color: mainPanel.visible ? "#33000000" : "transparent"
         antialiasing: false
         border.width: mouse.hovered ? 1 : 0
-        border.color: "darkslategray"
+        border.color: colors.barBorderColor
         radius: 8
 
         HoverHandler {
@@ -95,7 +95,7 @@ Scope {
               font.pointSize: 30
             }
             Text {
-              text: " - " + UPower.displayDevice.timeToFull
+              text: " - " + UPower.displayDevice.percentage * 100 + "%"
               color: colors.barTextColor
               font.pointSize: 30
             }

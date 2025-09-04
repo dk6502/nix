@@ -14,7 +14,7 @@ PanelWindow {
         top: true
         left: true
     }
-    WlrLayershell.keyboardFocus: WlrKeyboardFocus.OnDemand
+    WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
     Rectangle {
         id: osBox
         anchors.left: parent.left

@@ -36,13 +36,6 @@
     };
   };
 
-  boot.plymouth = {
-    enable = true;
-    theme = "matrix";
-    themePackages = with pkgs; [
-      plymouth-matrix-theme
-    ];
-  };
 
   programs.dconf.profiles.user.databases = [
     {
@@ -122,6 +115,7 @@
     directory = "/home/dylan";
     files = {
       ".local/share/wallpaper.png".source = ../images/wallpaper.png;
+      ".local/share/wallpaper.jpg".source = ../images/wallpaper.jpg;
       ".config/helix/config.toml".source = ../config/helix.toml;
       ".config/helix/languages.toml".source = ../config/languages.toml;
       ".config/alacritty/alacritty.toml".source = ../config/alacritty.toml;
