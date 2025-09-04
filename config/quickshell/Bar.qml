@@ -62,7 +62,7 @@ Scope {
 
 
       Rectangle {
-        anchors.centerIn: parent
+        anchors.right: parent.right
         height: 24
         width: 100
         color: mainPanel.visible ? "#33000000" : "transparent"

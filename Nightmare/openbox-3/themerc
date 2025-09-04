@@ -36,31 +36,26 @@ menu.items.active.text.color: #ffffff
 #     Focused Window Settings
 #======================================
 
-window.active.title.bg: flat border
-window.active.title.bg.color: #245278
-window.active.title.bg.border.color: #25548a
-window.active.handle.bg: raised
-window.active.handle.bg.color: #181818
-window.active.grip.bg: parentrelative
-window.active.label.bg: parentrelative
-window.active.label.text.color: #ffffff
+window.*.title.bg: Gradient Vertical
+window.*.title.bg.color: #242a2e
+window.*.title.bg.colorTo: #30383d
+window.*.border.color: #3c454d
+window.*.handle.bg: raised
+window.*.handle.bg.color: #181818
+window.*.grip.bg: parentrelative
+window.*.label.bg: parentrelative
+window.active.label.text.color: #91a3b0
 window.*.button.*.bg: parentrelative
-window.active.button.*.image.color: #ffffff
-window.active.button.*.pressed.image.color: #000000
-window.active.button.disabled.image.color: #ffffff
+window.active.button.*.image.color: #91a3b0
+window.*.button.*.pressed.image.color: #000000
+window.*.button.disabled.image.color: #ffffff
 
 #======================================
 #     Unfocused Window Settings
 #======================================
 
-window.inactive.title.bg: raised
-window.inactive.title.bg.color: #181818
-window.inactive.handle.bg: raised
-window.inactive.handle.bg.color: #181818
-window.inactive.grip.bg: parentrelative
-window.inactive.label.bg: parentrelative
-window.inactive.label.text.color: #ffffff
-window.inactive.button.*.image.color: #ffffff
+window.inactive.label.text.color: #708090
+window.inactive.button.*.image.color: #708090
 
 #======================================
 #     Global Width Settings
@@ -77,7 +72,6 @@ menu.overlap.x: -5
 #     Miscellaneous Settings
 #======================================
 
-border.color: #000000
 menu.border.color: #000000
 
 #======================================
