@@ -2,13 +2,14 @@ import Quickshell
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Controls
+import QtQuick.Effects
 
 Scope {
   // no more time object
 
   Variants {
     model: Quickshell.screens
-
+    
     PanelWindow {
       required property var modelData
       screen: modelData
@@ -28,46 +29,73 @@ Scope {
       Rectangle {
         anchors.fill: parent
         border.width: 1
-        border.color: "#FF171010"
+        border.color: "#FF3c454d"
         gradient: Gradient {
-          GradientStop { position: 0.0; color: "#FF181818"}
-          GradientStop { position: 1.0; color: "#FF1F1F1F"}
+          GradientStop { position: 0.0; color: "#FF242a2e"}
+          GradientStop { position: 1.0; color: "#FF30383d"}
         }
       }
 
       Launcher {
         id: appLauncher
       }
+
+      MainPanel {
+        id: mainPanel
+      }
                   
       Row {
         anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
         MouseArea {
-          width: 26; height: 24
+          id: launchButton
+          width: bar.height+2; height: bar.height
           onClicked: appLauncher.visible = !appLauncher.visible
 
           Image {
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            height: 22; width: 22
+            height: 24; width: 28
             source: Quickshell.iconPath("kmenu")
           }
         }
       }
 
-      
-      Row {
+
+      Rectangle {
         anchors.centerIn: parent
-        ClockWidget {
-          color: "gainsboro"
+        height: 24
+        width: 100
+        color: mainPanel.visible ? "#33000000" : "transparent"
+        antialiasing: false
+        border.width: mouse.hovered ? 1 : 0
+        border.color: "darkslategray"
+        radius: 8
+
+        HoverHandler {
+          id: mouse
+          acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+          cursorShape: Qt.PointingHandCursor
+        }
+        MouseArea {
+          anchors.fill: parent
+          onClicked: {
+            mainPanel.visible = !mainPanel.visible
+            // parent.color = "#55000000"
+          }
+          Row {
+            anchors.centerIn: parent
+            id: middle
+            ClockWidget {
+              color: "SlateGray"
+              font.pointSize: 30
+            }
+          }
         }
       }
+
       Row {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
-        SysTray {
-          anchors.verticalCenter: verticalCenter
-        }
       }
     }
   }

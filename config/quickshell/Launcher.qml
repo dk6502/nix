@@ -4,6 +4,7 @@ import Quickshell.Io
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Effects
 PanelWindow {
     width: 250
     height: 400
@@ -19,8 +20,8 @@ PanelWindow {
         anchors.left: parent.left
         width: 40; height: parent.height
         gradient: Gradient {
-            GradientStop { position: 0.0; color: "#FF245278"}
-            GradientStop { position: 1.0; color: "#FF25548A"}
+            GradientStop { position: 0.0; color: "#FF363f45"}
+            GradientStop { position: 1.0; color: "#FF242a2e"}
         }
         Text {
             FileView {
@@ -41,21 +42,35 @@ PanelWindow {
             text: os_release.prettyName
             color: "white"
         }
+
+        MultiEffect {
+            source: osText
+            anchors.fill: osText
+            shadowBlur: 0.0
+            shadowEnabled: true
+            shadowColor: "black"
+            shadowVerticalOffset: 1
+            shadowHorizontalOffset: 1
+            transform: Rotation {
+                origin.x: 12
+                origin.y: 0
+                angle: -90
+            }
+
+        }
     }
     Rectangle {
         anchors.left: osBox.right
         anchors.right: parent.right
         height: parent.height
-        gradient: Gradient {
-            GradientStop { position: 0.0; color: "#FF181818"}
-            GradientStop { position: 1.0; color: "#FF1F1F1F"}
-        }
+        color: "#FFF1F1F1"
         ScrollView {
             width: parent.width; height: parent.height - searchBox.height
             anchors.top: parent.top
             id: apps
             anchors.bottom: searchBox.top
             ListView {
+                id: appList
                 clip: true
                 highlightFollowsCurrentItem: true
                 keyNavigationEnabled: true
@@ -67,11 +82,15 @@ PanelWindow {
                     })
                 }
                 delegate: MouseArea {
+                    id: delegate
+        
                     width: 250
                     height: 24
                     Text {
+                        id: text
                         text: " " + modelData.name
-                        color: "gainsboro"
+                        color: "#FF1F1F1F"
+    
                     }
                     onClicked: {
                         modelData.execute();
@@ -79,8 +98,13 @@ PanelWindow {
                         searchField.clear();
                     }
                 }
+
             }
+
         }
+
+        
+
         Rectangle {
             id: searchBox
             height: 72
@@ -104,7 +128,7 @@ PanelWindow {
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
                             text: "Exit"
-                            color: "gainsboro"
+                            color: "#FF1F1F1F"
                         }
                         Text {
                             anchors.verticalCenter: parent.verticalCenter
@@ -122,12 +146,16 @@ PanelWindow {
                     width: parent.width - 10
                     Image {
                         source: Quickshell.iconPath("system-search")
-                        height: 24; width: 24
+                        height: 20; width: 20
                         anchors.right: parent.right
+                        anchors.rightMargin: 2
+                        anchors.topMargin: 5
+                        anchors.verticalCenter: parent.verticalCenter
                     }
                     background: Rectangle {
                         radius: 0
                         implicitWidth: parent.width
+                        border.color: "#FF1F1F1F"
                     }
                 }
             }
@@ -136,6 +164,6 @@ PanelWindow {
     Rectangle {
         anchors.fill: parent
         color: "transparent"
-        border.color: "#FF101010"
+        border.color: "#FFD1D1D1"
     }
 }
