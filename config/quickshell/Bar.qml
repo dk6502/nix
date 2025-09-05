@@ -16,7 +16,7 @@ Scope {
       required property var modelData
       screen: modelData
       id: bar
-      implicitHeight: 48
+      implicitHeight: 44
       anchors {
         bottom: true
         left: true
@@ -53,11 +53,13 @@ Scope {
       }
                   
       Row {
+        anchors.left: parent.left
+        anchors.leftMargin: 10
         spacing: 8
         MouseArea {
           anchors.verticalCenter: parent.verticalCenter
           id: launchButton
-          width: startText.width + 5; height: bar.height
+          width: startText.width + 20; height: bar.height
           onClicked: appLauncher.visible = !appLauncher.visible
           Rectangle {
             anchors.fill: parent
@@ -96,7 +98,7 @@ Scope {
                 color: "transparent"
                 Image {
                   anchors.fill: parent
-                  anchors.margins: 4
+                  anchors.margins: 6
                   source: Quickshell.iconPath(modelData.appId)
                 }
               }
