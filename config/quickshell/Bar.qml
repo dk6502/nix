@@ -16,7 +16,7 @@ Scope {
       required property var modelData
       screen: modelData
       id: bar
-      implicitHeight: 32
+      implicitHeight: 48
       anchors {
         bottom: true
         left: true
@@ -53,6 +53,7 @@ Scope {
       }
                   
       Row {
+        spacing: 8
         MouseArea {
           anchors.verticalCenter: parent.verticalCenter
           id: launchButton
@@ -68,14 +69,37 @@ Scope {
             Text {
               anchors.centerIn: parent
               id: startText
-              text: "PENIS!!!!!!!!"
+              text: "Start"
               color: colors.barTextColor
             }
-          
+
             HoverHandler {
               id: mouseLauncher
               acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
               cursorShape: Qt.PointingHandCursor
+            }
+          }
+        }
+        Row {
+          spacing: 8
+          Repeater {
+            model: ToplevelManager.toplevels
+            Button {
+              width: bar.height
+              height: bar.height
+              onClicked: modelData.activate()
+              background: Rectangle {
+                radius: 8
+                antialiasing: false
+                border.width: 1
+                border.color: colors.barBorderColor
+                color: "transparent"
+                Image {
+                  anchors.fill: parent
+                  anchors.margins: 4
+                  source: Quickshell.iconPath(modelData.appId)
+                }
+              }
             }
           }
         }
