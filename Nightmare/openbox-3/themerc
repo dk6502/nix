@@ -36,7 +36,7 @@ menu.items.active.text.color: #ffffff
 #     Focused Window Settings
 #======================================
 
-window.*.title.bg: Gradient Vertical
+window.*.title.bg: Gradient Horizontal
 window.*.title.bg.color: #1f1f1f
 window.*.title.bg.colorTo: #292929
 window.*.border.color: #3f3f3f

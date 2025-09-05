@@ -149,5 +149,6 @@
     comma
     mpv
     feh
+    brightnessctl
   ];
 }

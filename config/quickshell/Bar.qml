@@ -4,6 +4,7 @@ import Quickshell.Services.UPower
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Effects
+import "mainPanel" as Panel
 
 Scope {
   // no more time object
@@ -15,9 +16,9 @@ Scope {
       required property var modelData
       screen: modelData
       id: bar
-      implicitHeight: 24
+      implicitHeight: 32
       anchors {
-        top: true
+        bottom: true
         left: true
         right: true
       }
@@ -25,6 +26,8 @@ Scope {
       Colors {
         id: colors
       }
+
+      
       Keys.onPressed: event => {
       	if (event.key == Qt.Key_Escape) appLauncher.visible = false;
       	if (event.key == Qt.Key_F1) appLauncher.visible = !appLauncher.visible;
@@ -45,22 +48,35 @@ Scope {
         id: appLauncher
       }
 
-      MainPanel {
+      Panel.MainPanel {
         id: mainPanel
       }
                   
       Row {
-        anchors.left: parent.left
         MouseArea {
+          anchors.verticalCenter: parent.verticalCenter
           id: launchButton
-          width: bar.height+2; height: bar.height
+          width: startText.width + 5; height: bar.height
           onClicked: appLauncher.visible = !appLauncher.visible
-
-          Image {
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            height: 24; width: 28
-            source: Quickshell.iconPath("kmenu")
+          Rectangle {
+            anchors.fill: parent
+            color: appLauncher.visible ? "#33000000" : "transparent"
+            antialiasing: false
+            border.width: mouseLauncher.hovered ? 1 : 0
+            border.color: colors.barBorderColor
+            radius: 8
+            Text {
+              anchors.centerIn: parent
+              id: startText
+              text: "PENIS!!!!!!!!"
+              color: colors.barTextColor
+            }
+          
+            HoverHandler {
+              id: mouseLauncher
+              acceptedDevices: PointerDevice.Mouse | PointerDevice.TouchPad
+              cursorShape: Qt.PointingHandCursor
+            }
           }
         }
       }
@@ -68,7 +84,7 @@ Scope {
 
       Rectangle {
         anchors.right: parent.right
-        height: 24
+        height: bar.height
         width: 150
         color: mainPanel.visible ? "#33000000" : "transparent"
         antialiasing: false
@@ -95,7 +111,7 @@ Scope {
               font.pointSize: 30
             }
             Text {
-              text: " - " + UPower.displayDevice.percentage * 100 + "%"
+              text: " - " + (UPower.displayDevice.percentage * 100).toFixed(2) + "%"
               color: colors.barTextColor
               font.pointSize: 30
             }

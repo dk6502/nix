@@ -3,12 +3,9 @@ import Quickshell
 import Quickshell.Services.Mpris
 Repeater {
    id: mpris
-   anchors.top: parent.top
-   model: Mpris.players.values
+   model: Mpris.players.values.filter(a => a.dbusName != "org.mpris.MediaPlayer2.tidal-hifi")
    Rectangle {
        anchors.horizontalCenter: parent.horizontalCenter
-       anchors.top: parent.top
-       anchors.topMargin: 5
        border.color: colors.barBorderColor
        height: 60
        width: parent.width - 10
@@ -27,7 +24,7 @@ Repeater {
            anchors.left: albumArt.right
            anchors.leftMargin: 6
            anchors.verticalCenter: parent.verticalCenter
-           text: modelData.trackTitle +"\n" + modelData.trackArtist
+           text: modelData.trackTitle +"\n" + modelData.trackAlbum + "\n" + modelData.trackArtist
            color: colors.panelTextColor
        }
        MouseArea {

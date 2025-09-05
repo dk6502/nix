@@ -5,7 +5,7 @@
     <name>Nightmare</name>
     <cornerRadius>0</cornerRadius>
     <titlebar>
-      <layout>max:iconify,close</layout>
+      <layout>:maximize,iconify,close</layout>
     </titlebar>
     <font>
       <name>mono</name>

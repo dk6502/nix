@@ -29,13 +29,13 @@ PanelWindow {
         }
         border.width: 1
         border.color: "#FF3c454d"
-
-        MusicPlayer {
-            id: mpris
-        }
-
-        AudioPanel {
-            y: Mpris.players.values.length * 35
+        Column {
+            anchors.fill: parent
+            anchors.topMargin: 5
+            spacing: 5
+            MusicPlayer {} 
+            AudioPanel {}
+            BrightnessPanel {}
         }
     }
 }

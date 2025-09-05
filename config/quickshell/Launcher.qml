@@ -11,7 +11,7 @@ PanelWindow {
     visible: false
     id: launcher
     anchors {
-        top: true
+        bottom: true
         left: true
     }
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
@@ -42,23 +42,8 @@ PanelWindow {
             text: os_release.prettyName
             color: "white"
         }
-
-        MultiEffect {
-            source: osText
-            anchors.fill: osText
-            shadowBlur: 0.0
-            shadowEnabled: true
-            shadowColor: "black"
-            shadowVerticalOffset: 1
-            shadowHorizontalOffset: 1
-            transform: Rotation {
-                origin.x: 12
-                origin.y: 0
-                angle: -90
-            }
-
-        }
     }
+    
     Rectangle {
         anchors.left: osBox.right
         anchors.right: parent.right
