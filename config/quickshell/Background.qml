@@ -28,11 +28,13 @@ PanelWindow {
         stdout: StdioCollector {
             onStreamFinished: {
                 var items = this.text.split(/\r\n|\r|\n/);
-                ls.desktopNames.length = 0;
                 for (var i=0;i<items.length -1;i++) {
-                    ls.desktopNames.push(items[i]);
-                }               
-                
+                    if (ls.desktopNames[i] == items[i]) {}
+                    else {
+                        ls.desktopNames.length=i;
+                        ls.desktopNames.push(items[i]);
+                    }
+                }
             }
         }
     }
@@ -58,6 +60,23 @@ PanelWindow {
                     id: xdgopen
                     command: ["xdg-open", "/home/dylan/Desktop/" + modelData]   
                 }
+
+                Process {
+                    id: isFolder
+                    running: true
+                    property bool yes: false
+                    command: ["file", "-b", "/home/dylan/Desktop/" + modelData]
+                    stdout: StdioCollector {
+                        onStreamFinished: {
+                            if (this.text.includes("directory")) {
+                                isFolder.yes = true;
+                             } else {
+                                isFolder.yes = false;
+                             }
+                            console.log(isFolder)
+                         }
+                    }
+                }
                 
                 Rectangle {
                     visible: mouse.hovered 
@@ -69,7 +88,7 @@ PanelWindow {
                     }
                 }
                 Image {
-                    source: Quickshell.iconPath("unknown")
+                    source: isFolder.yes ? Quickshell.iconPath("folder") : Quickshell.iconPath("unknown")
                     height: 64
                     width: 64
                     anchors.horizontalCenter: parent.horizontalCenter

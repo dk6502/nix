@@ -10,8 +10,8 @@
     hideMounts = true;
     directories = [
       "/var/log"
-      "/etc/NetworkManager"
       "/var/lib/nixos"
+      "/var/lib/iwd"
     ];
     users.dylan = {
       directories = [
@@ -30,7 +30,7 @@
         ".config/vesktop"
         ".config/maestral"
         ".config/yabridgectl"
-        ".config/chromium"
+        ".mozilla"
         ".config/tidal-hifi"
       ];
     };
@@ -52,7 +52,14 @@
   services.upower.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
+  networking.wireless.iwd = {
+    enable = true;
+    settings = {
+      Settings = {
+        AutoConnect = true;
+      };
+    };
+  };
 
   services.displayManager.ly = {
     enable = true;
@@ -61,7 +68,7 @@
     };
   };
 
-  programs.labwc.enable = true;
+  programs.wayfire.enable = true;
 
   qt = {
     enable = true;
@@ -99,8 +106,7 @@
       prismlauncher
       maestral
       winetricks
-      zathura
-      pcmanfm-qt
+      sioyek
       libsForQt5.qtstyleplugin-kvantum
       mako
       qjackctl
@@ -118,37 +124,51 @@
       ".local/share/wallpaper.jpg".source = ../images/wallpaper.jpg;
       ".config/helix/config.toml".source = ../config/helix.toml;
       ".config/helix/languages.toml".source = ../config/languages.toml;
-      ".config/alacritty/alacritty.toml".source = ../config/alacritty.toml;
-      ".config/labwc/menu.xml".source = ../config/menu.xml;
-      ".config/labwc/autostart".source = ../config/autostart;
-      ".config/labwc/rc.xml".source = ../config/rc.xml;
+      ".config/wayfire/config.ini".source = ../config/wayfire.ini;
       ".config/quickshell".source = ../config/quickshell;
-      ".config/pcmanfm-qt/default/settings.conf".source = ../config/pcmanfm-qt.conf;
-      ".config/qt6ct/colors/DarkDream.colors".source = ../config/DarkDream.colors;
-      ".themes/Nightmare".source = ../Nightmare;
+      ".wezterm.lua".source = ../config/wezterm.lua;
       ".icons/slick".source = ../slick;
       ".config/Kvantum".source = ../config/Kvantum;
     };
     clobberFiles = true;
   };
 
+  programs.foot = {
+    enable = true;
+    theme = "xterm";
+    settings = {
+      main = {
+        font = "Tamsyn:size=11";
+      };
+      csd = {
+        size = 30;
+        border-color = "D1D1D1";
+        border-width = 1;
+      };
+      colors = {
+        alpha = 0.85;
+      };
+    };
+  };
+  programs.firefox.enable = true;
+
   environment.systemPackages = with pkgs; [
     wget
     quickshell
     git-credential-manager
     unzip
-    alacritty
-    sfwbar
-    swaybg
+    lua
     wl-clipboard
     grim
     slurp
     gsettings-qt
     gsettings-desktop-schemas
-    ungoogled-chromium
     comma
     mpv
     feh
     brightnessctl
+    kdePackages.dolphin
+    file
+    xwayland-satellite
   ];
 }
