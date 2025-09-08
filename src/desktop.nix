@@ -73,7 +73,6 @@
   qt = {
     enable = true;
     style = "kvantum";
-    platformTheme = "qt5ct";
   };
 
   fonts.packages = with pkgs; [
@@ -135,12 +134,13 @@
 
   programs.foot = {
     enable = true;
-    theme = "xterm";
+    theme = "iterm";
     settings = {
       main = {
         font = "Tamsyn:size=11";
       };
       csd = {
+        preferred ="client";
         size = 30;
         border-color = "D1D1D1";
         border-width = 1;
