@@ -99,7 +99,7 @@ Scope {
                 Image {
                   anchors.fill: parent
                   anchors.margins: 6
-                  source: Quickshell.iconPath(modelData.appId)
+                  source: Quickshell.iconPath(modelData.appId, "unknown")
                 }
               }
             }
