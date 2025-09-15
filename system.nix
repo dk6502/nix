@@ -1,23 +1,31 @@
-{config, lib, pkgs, ...}: {
+{system, pkgs, lib, ...}:
+let sources = import ./npins;
+in {
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
     config = {
-      user.name = "dkr6";
+      user.name = "dkrsix";
       user.email = "dylank@posteo.com";
       credential = {
         helper = "manager";
-        credentialStore = "secretservice";
+        credentialStore = "plaintext";
       };
     };
   };
 
-  services.gnome.gnome-keyring.enable = true;
   programs.bash.promptInit = ''
     PS1=' \w λ '
   '';
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings.experimental-features = "nix-command flakes";
+    registry.nixpkgs.to = {
+      type = "path";
+      path = sources.nixpkgs;
+    };
+    nixPath = ["nixpkgs=flake:nixpkgs"];
+  };
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -28,7 +36,7 @@
   users.users.dylan = {
     isNormalUser = true;
     extraGroups = [ "wheel"  "realtime" "audio" ];
-    password = "7538";
+    hashedPassword = "$y$j9T$8.fMAkhjGqlgJCqZqAo721$fGUuH27Y4ugQqfITSfNeFoibwQ9U8KCc5yzopIugbvB";
   };
 
   environment.systemPackages = with pkgs; [
@@ -37,4 +45,3 @@
     git-credential-manager
   ];
 }
-:OA

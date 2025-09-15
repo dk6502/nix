@@ -1,4 +1,4 @@
-{config, lib, pkgs, ...}: {
+{
   services.openssh = {
     enable = true;
     ports = [22];

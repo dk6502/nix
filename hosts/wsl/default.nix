@@ -6,6 +6,11 @@
 }:
 
 {
+  imports = [
+    ../../system.nix
+    <nixos-wsl/modules>
+    ../../shared/openssh.nix
+  ];
   wsl = {
     enable = true;
     defaultUser = "dylan";
