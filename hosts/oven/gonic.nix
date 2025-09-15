@@ -1,7 +1,9 @@
 {config, lib, pkgs, ...}: {
   environment.persistence."/persist" = {
     directories = [
-      "/srv/audio"
+      "/srv/audio/music"
+      "/srv/audio/podcasts"
+      "/srv/audio/playlists"
     ];
   };
   services.gonic = {

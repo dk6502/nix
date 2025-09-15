@@ -34,6 +34,7 @@ in
     users.dylan = {
       directories = [
         "state"
+        ".gcm"
       ];
     };
   };
