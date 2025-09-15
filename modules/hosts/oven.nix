@@ -4,7 +4,7 @@
   imports = [ (modulesPath + "/profiles/qemu-guest.nix")];
 
   networking.useDHCP = true;
-  networing.hostName = "oven";
+  networking.hostName = "oven";
   nixpkgs.hostPlatform = "x86_64-linux";
 
   boot.loader.grub.enable = true;
