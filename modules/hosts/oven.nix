@@ -9,6 +9,20 @@
 
   boot.loader.grub.enable = true;
 
+  system.stateVersion = "25.11";
+
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/log"
+      "/var/lib/nixos"
+    ];
+    users.dylan = {
+      directories = [
+        "state"
+      ];
+    };
+  };
+  
   disko.devices = {
     disk = {
       main = {
@@ -32,7 +46,7 @@
               };
             };
             nix = {
-              size = "100%";
+              size = "40G";
               content = {
                 type = "filesystem";
                 format = "ext4";
