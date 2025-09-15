@@ -1,9 +1,0 @@
-[language-server.texlab.config]
-texlab.build.onSave = true
-texlab.build.executable = "tectonic"
-texlab.build.args = ["%f"]
-
-
-[languages]
-name = "latex"
-language-servers = "texlab"
