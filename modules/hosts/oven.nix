@@ -3,6 +3,8 @@
 {
   imports = [ (modulesPath + "/profiles/qemu-guest.nix")];
 
+  fileSystems."/persist".neededForBoot = true;
+
   networking.useDHCP = true;
   networking.hostName = "oven";
   nixpkgs.hostPlatform = "x86_64-linux";
