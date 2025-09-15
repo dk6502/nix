@@ -32,7 +32,8 @@
   };
 
   environment.systemPackages = with pkgs; [
-    mg
+
+    helix
     git-credential-manager
   ];
 }
