@@ -40,6 +40,8 @@
           ./modules/hosts/oven.nix
           ./modules/setups/system.nix
           ./modules/services/openssh.nix
+          ./modules/services/gonic.nix
+          ./modules/services/caddy.nix
         ];
       }; 
     };

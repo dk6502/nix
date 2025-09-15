@@ -18,6 +18,9 @@
       "/var/log"
       "/var/lib/nixos"
     ];
+    files = [
+      "/etc/machine-id"
+    ];
     users.dylan = {
       directories = [
         "state"

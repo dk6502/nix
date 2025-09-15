@@ -7,7 +7,7 @@
       user.email = "dylank@posteo.com";
       credential = {
         helper = "manager";
-        credentialStore = "secretservice";
+        credentialStore = "plaintext";
       };
     };
   };
@@ -28,7 +28,7 @@
   users.users.dylan = {
     isNormalUser = true;
     extraGroups = [ "wheel"  "realtime" "audio" ];
-    password = "7538";
+    hashedPassword = "$y$j9T$8.fMAkhjGqlgJCqZqAo721$fGUuH27Y4ugQqfITSfNeFoibwQ9U8KCc5yzopIugbvB";
   };
 
   environment.systemPackages = with pkgs; [
