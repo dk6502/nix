@@ -1,5 +1,5 @@
 {system, pkgs, lib, ...}:
-let sources = import ./npins;
+let sources = import ../npins;
 in {
   programs.git = {
     enable = true;

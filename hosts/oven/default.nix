@@ -6,6 +6,11 @@ in
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     (sources.disko + "/module.nix")
+    (sources.impermanence + "/nixos.nix")
+    ../../shared/system.nix
+    ./gonic.nix
+    ./caddy.nix
+    ../../shared/openssh.nix
   ];
 
   fileSystems."/persist".neededForBoot = true;
