@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.gitFull;
     config = {
-      user.name = "dkr6";
+      user.name = "dkrsix";
       user.email = "dylank@posteo.com";
       credential = {
         helper = "manager";
