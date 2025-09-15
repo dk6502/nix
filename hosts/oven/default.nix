@@ -1,8 +1,11 @@
 {config, lib, pkgs, modulesPath, ... }:
-
+let
+  sources = import ../../npins;
+in
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    (sources.disko + "/module.nix")
   ];
 
   fileSystems."/persist".neededForBoot = true;
