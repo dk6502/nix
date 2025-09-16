@@ -9,4 +9,4 @@ shift
 nixpkgs_pin=$(nix eval --raw -f npins/default.nix nixpkgs)
 nix_path="nixpkgs=${nixpkgs_pin}:nixos-config=${PWD}/hosts/$(hostname)/default.nix"
 
-sudo env NIX_PATH="${nix_path}" nixos-rebuild "$cmd" --no-reexec "$@"
+sudo env NIX_PATH="${nix_path}" nixos-rebuild "$cmd" --no-reexec "$@" --log-format bar --show-trace

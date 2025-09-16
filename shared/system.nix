@@ -19,6 +19,7 @@ in {
   '';
 
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     settings.experimental-features = "nix-command flakes";
     registry.nixpkgs.to = {
       type = "path";

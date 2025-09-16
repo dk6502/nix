@@ -4,17 +4,23 @@
   pkgs,
   ...
 }:
-
+let
+  sources = import ../../npins;
+in
 {
   imports = [
-    ../../system.nix
-    <nixos-wsl/modules>
+    ../../shared/system.nix
+    (sources.nixos-wsl + "/modules")
     ../../shared/openssh.nix
   ];
   wsl = {
     enable = true;
     defaultUser = "dylan";
   };
+
+  environment.systemPackages = with pkgs; [
+     (pkgs.callPackage sources.snix {}).snix.cli
+  ];
   
   networking.hostName = "wsl";
   time.timeZone = "America/Chicago";
