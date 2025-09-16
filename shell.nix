@@ -7,5 +7,6 @@ in
       nil
       nixd
       npins
+      nixos-anywhere
     ];
   }

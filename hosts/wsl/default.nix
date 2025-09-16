@@ -11,7 +11,6 @@ in
   imports = [
     ../../shared/system.nix
     (sources.nixos-wsl + "/modules")
-    ../../shared/openssh.nix
   ];
   wsl = {
     enable = true;
