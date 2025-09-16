@@ -1,28 +1,11 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
 let
   sources = import ../../npins;
 in
-{
-  imports = [
-    ../../shared/system.nix
+import (sources.nixpkgs + "/nixos/lib/eval-config.nix") {
+  modules = [
     (sources.nixos-wsl + "/modules")
+    ../../shared/system.nix
+    ./wsl.nix
+    ../../shared/openssh.nix
   ];
-  wsl = {
-    enable = true;
-    defaultUser = "dylan";
-  };
-
-  environment.systemPackages = with pkgs; [
-     (pkgs.callPackage sources.snix {}).snix.cli
-  ];
-  
-  networking.hostName = "wsl";
-  time.timeZone = "America/Chicago";
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  system.stateVersion = "25.05";
 }

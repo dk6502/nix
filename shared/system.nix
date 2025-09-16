@@ -1,5 +1,6 @@
-{system, pkgs, lib, ...}:
-let sources = import ../npins;
+let
+  sources = import ../npins;
+  pkgs = import sources.nixpkgs {};
 in {
   programs.git = {
     enable = true;
@@ -20,13 +21,16 @@ in {
 
   nix = {
     package = pkgs.lixPackageSets.stable.lix;
-    settings.experimental-features = "nix-command flakes";
+    settings.experimental-features = "";
     registry.nixpkgs.to = {
       type = "path";
       path = sources.nixpkgs;
     };
-    nixPath = ["nixpkgs=flake:nixpkgs"];
+    channel.enable = false;
+    nixPath = [ "nixpkgs=/etc/nixos/nixpkgs"];
   };
+
+  environment.etc."nixos/nixpkgs".source = builtins.storePath pkgs.path;
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -41,8 +45,8 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-
     helix
     git-credential-manager
+    (pkgs.writeShellScriptBin '','' ''nix-shell -p $1 --run $1'')
   ];
 }

@@ -7,6 +7,8 @@ in
       nil
       nixd
       npins
-      nixos-anywhere
+      (pkgs.writeShellScriptBin ''rebuild'' ''
+        $(nix-build --no-link --log-format bar -A config.system.build.toplevel)/bin/switch-to-configuration $@
+      '')
     ];
   }
