@@ -12,4 +12,8 @@ let
     elisa
     kate
   ];
+
+	environment.systempackages = with pkgs; [
+    ungoogled-chromium
+  ];
 }
