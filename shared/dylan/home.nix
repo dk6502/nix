@@ -9,13 +9,19 @@ in
     home.stateVersion = "25.11";
     programs.alacritty = {
       enable = true;
+      theme = "github_dark_high_contrast";
       settings = {
         window = {
-          opacity = 0.8;
+          opacity = 0.65;
           blur = true;
         };
       };
     };
-    programs.plasma = import ./plasma.nix;
+    programs.helix = {
+      enable = true;
+      settings = {
+        theme = "base16_transparent";
+      };
+    };
   };
 }
