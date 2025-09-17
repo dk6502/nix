@@ -1,6 +1,7 @@
 let
   sources = import ../npins;
   pkgs = sources.nixpkgs {};
+in
 {
   services.displayManager.sddm = {
     enable = true;
