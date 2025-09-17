@@ -2,7 +2,7 @@
 
   fileSystems."/persist".neededForBoot = true;
 
-  networking.useDHCP = true;
+
   networking.hostName = "dylan-laptop";
   nixpkgs.hostPlatform = "x86_64-linux";
 
