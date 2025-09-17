@@ -2,7 +2,7 @@
 
   fileSystems."/persist".neededForBoot = true;
 
-
+  time.timeZone = "America/Chicago";
   networking.hostName = "dylan-laptop";
   nixpkgs.hostPlatform = "x86_64-linux";
 
@@ -20,14 +20,6 @@
     ];
     users.dylan = {
       directories = [
-        "Downloads"
-        "Music"
-        "Pictures"
-        "Documents"
-        "Videos"
-        ".config/chromium"
-        ".wine"
-        ".gcm"
       ];
     };
   };
