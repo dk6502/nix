@@ -6,7 +6,7 @@
   networking.hostName = "dylan-laptop";
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  boot.loader.grub.enable = true;
+  boot.loader.systemd-boot.enable = true;
 
   system.stateVersion = "25.11";
 
