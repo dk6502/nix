@@ -16,6 +16,19 @@
       "url": "https://api.github.com/repos/nix-community/disko/tarball/v1.12.0",
       "hash": "0wbx518d2x54yn4xh98cgm65wvj0gpy6nia6ra7ns4j63hx14fkq"
     },
+    "home-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "home-manager"
+      },
+      "branch": "master",
+      "submodules": false,
+      "revision": "9f408dc51c8e8216a94379e6356bdadbe8b4fef9",
+      "url": "https://github.com/nix-community/home-manager/archive/9f408dc51c8e8216a94379e6356bdadbe8b4fef9.tar.gz",
+      "hash": "09bfkcr3h8idbsmp8x60d3pbjx616c8s7sw1m3m92g7lnwc6wx9f"
+    },
     "impermanence": {
       "type": "Git",
       "repository": {
@@ -50,6 +63,19 @@
       "name": "nixpkgs-unstable",
       "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre861972.88cef159e47c/nixexprs.tar.xz",
       "hash": "0zscvr0qa3capyzhmp798hgncz2qy8ggm843y10wk35jk7p0174f"
+    },
+    "plasma-manager": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "nix-community",
+        "repo": "plasma-manager"
+      },
+      "branch": "trunk",
+      "submodules": false,
+      "revision": "d47428e5390d6a5a8f764808a4db15929347cd77",
+      "url": "https://github.com/nix-community/plasma-manager/archive/d47428e5390d6a5a8f764808a4db15929347cd77.tar.gz",
+      "hash": "0akxlh7nb5alqfx5brpyal1cq9n104hcib8vq7czsp90x3lsdmn9"
     },
     "snix": {
       "type": "Git",

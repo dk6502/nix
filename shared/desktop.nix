@@ -16,6 +16,7 @@ in
         "Documents"
         "Videos"
         ".config/chromium"
+        ".config/vesktop"
         ".wine"
         ".gcm"
       ];
