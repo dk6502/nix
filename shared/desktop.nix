@@ -13,6 +13,8 @@ let
     kate
   ];
 
+  networking.networkmanager.enable = true;
+
 	environment.systemPackages = with pkgs; [
     ungoogled-chromium
   ];
