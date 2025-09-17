@@ -8,7 +8,6 @@ import (sources.nixpkgs + "/nixos/lib/eval-config.nix") {
     (sources.impermanence + "/nixos.nix")
     ../../shared/system.nix
     ./oven.nix
-    ./gonic.nix
     ./caddy.nix
     ../../shared/openssh.nix
   ];
