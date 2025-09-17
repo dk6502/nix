@@ -1,6 +1,6 @@
 let
   sources = import ../npins;
-  pkgs = sources.nixpkgs {};
+  pkgs = import sources.nixpkgs {};
 in
 {
   services.displayManager.sddm = {
