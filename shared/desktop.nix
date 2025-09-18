@@ -17,7 +17,6 @@ in
         "Videos"
         ".config/chromium"
         ".config/vesktop"
-        ".wine"
         ".gcm"
       ];
     };
@@ -43,4 +42,5 @@ in
     vesktop
     alacritty
   ];
+
 }
