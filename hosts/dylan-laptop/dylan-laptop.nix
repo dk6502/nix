@@ -47,7 +47,7 @@
               };
             };
             nix = {
-              size = "500G";
+              size = "250G";
               content = {
                 type = "filesystem";
                 format = "xfs";
@@ -55,7 +55,7 @@
               };
             };
             persist = {
-              size = "100%";
+              size = "250G";
               content = {
                 type = "filesystem";
                 format = "xfs";

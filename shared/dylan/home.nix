@@ -11,7 +11,10 @@ in
   };
   home-manager.sharedModules = [(sources.plasma-manager + "/modules")];
   home-manager.users.dylan = {
-    home.packages = with pkgs; [papirus-icon-theme];
+    home.packages = with pkgs; [
+      papirus-icon-theme
+      iosevka
+    ];
     home.stateVersion = "25.11";
     programs.alacritty = {
       enable = true;
@@ -30,19 +33,6 @@ in
       };
     };
 
-    programs.zed-editor = {
-      enable = true;
-      package = pkgs.zed-editor-fhs;
-      extensions = ["nix" "github-dark-default" "caddyfile" "dockerfile" "latex"];
-      userSettings = {
-        disable_ai = true;
-        theme = {
-          mode = "dark";
-          light = "Ayu Light";
-          dark = "GitHub Dark Default";
-        };
-      };
-    };
 
     programs.plasma = import ./plasma.nix;
   };
