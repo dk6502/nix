@@ -7,6 +7,7 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   boot.loader.systemd-boot.enable = true;
+  boot.supportedFilesystems = [ "ntfs "];
 
   system.stateVersion = "25.11";
 
