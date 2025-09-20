@@ -7,8 +7,9 @@
   nixpkgs.hostPlatform = "x86_64-linux";
 
   boot.loader.systemd-boot.enable = true;
-  boot.supportedFilesystems = [ "ntfs "];
+  boot.supportedFilesystems = [ "ntfs" ];
 
+  nixpkgs.config.allowUnfree = true;
   system.stateVersion = "25.11";
 
   environment.persistence."/persist" = {
@@ -47,20 +48,18 @@
                 mountpoint = "/boot";
               };
             };
-            nix = {
-              size = "250G";
+            linux = {
+              size = "500g";
               content = {
-                type = "filesystem";
-                format = "xfs";
-                mountpoint = "/nix";
-              };
-            };
-            persist = {
-              size = "250G";
-              content = {
-                type = "filesystem";
-                format = "xfs";
-                mountpoint = "/persist";
+                type = "btrfs";
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "/persist".mountpoint = "/persist";
+                  "nix" = {
+                    mountpoint = "/nix";
+                    mountOptions  = [ "noatime"];
+                  };
+                };
               };
             };
           };

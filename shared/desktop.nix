@@ -15,7 +15,7 @@ in
         "Pictures"
         "Documents"
         "Videos"
-        ".config/chromium"
+        ".mozilla"
         ".config/vesktop"
         ".gcm"
       ];
@@ -38,7 +38,7 @@ in
   networking.networkmanager.enable = true;
 
 	environment.systemPackages = with pkgs; [
-    ungoogled-chromium
+    firefox
     vesktop
     alacritty
   ];

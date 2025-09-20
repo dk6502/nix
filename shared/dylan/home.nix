@@ -14,7 +14,9 @@ in
     home.packages = with pkgs; [
       papirus-icon-theme
       iosevka
+      tidal-hifi
     ];
+    home.file.".local/share/wallpaper.jpg".source = ../../assets/wallpaper.jpg;
     home.stateVersion = "25.11";
     programs.alacritty = {
       enable = true;

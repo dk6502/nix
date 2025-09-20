@@ -30,6 +30,7 @@ in {
     nixPath = [ "nixpkgs=/etc/nixos/nixpkgs"];
   };
 
+
   environment.etc."nixos/nixpkgs".source = builtins.storePath pkgs.path;
 
   i18n.defaultLocale = "en_US.UTF-8";
