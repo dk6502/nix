@@ -1,6 +1,6 @@
 let
   sources = import ../npins;
-  pkgs = import sources.nixpkgs {};
+  pkgs = import sources.nixpkgs { };
 in
 {
   environment.persistence."/persist" = {
@@ -35,12 +35,19 @@ in
     konsole
   ];
 
+  fonts.packages = with pkgs; [
+    maple-mono.truetype
+    inter
+    iosevka
+  ];
+
   networking.networkmanager.enable = true;
 
-	environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     firefox
     vesktop
     alacritty
+
   ];
 
 }
