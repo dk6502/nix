@@ -9,17 +9,21 @@ in
 {
   environment.persistence."/persist".users.dylan = {
     directories = [
-      ".local/share/kwalletd"
       ".local/share/zed"
       ".config/tidal-hifi"
+      ".cargo"
+      ".xlcore"
     ];
   };
+
   home-manager.sharedModules = [ (sources.plasma-manager + "/modules") ];
   home-manager.users.dylan = {
     home.packages = with pkgs; [
-      papirus-icon-theme
-      iosevka
       tidal-hifi
+      xivlauncher
+      gnomeExtensions.blur-my-shell
+      gnomeExtensions.desktop-icons-ng-ding
+      gnomeExtensions.compiz-windows-effect
     ];
     home.file.".local/share/wallpaper.jpg".source = ../../assets/wallpaper.jpg;
     home.stateVersion = "25.11";
@@ -51,16 +55,21 @@ in
       extensions = [
         "github-dark-default"
         "nix"
+        "toml"
+        "meson"
+        "c"
+        "glsl"
+        "discord-presence"
       ];
       extraPackages = with pkgs; [
-        maple-mono.truetype
+        zed-discord-presence
       ];
       userSettings = {
         disable_ai = true;
-        buffer_font_size = 13;
+        buffer_font_size = 12;
         buffer_font_family = "Maple Mono";
         ui_font_size = 15;
-        ui_font_family = "Inter Displa";
+        ui_font_family = "Adwaita Sans";
         theme = {
           mode = "system";
           light = "Ayu Light";
@@ -76,6 +85,23 @@ in
 
     programs.bash.enable = true;
 
-    programs.plasma = import ./plasma.nix;
+    dconf.settings = {
+      "org/gnome/shell" = {
+        enabled-extensions = with pkgs.gnomeExtensions; [
+          blur-my-shell.extensionUuid
+          compiz-windows-effect.extensionUuid
+          desktop-icons-ng-ding.extensionUuid
+        ];
+      };
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+        accent-color = "pink";
+      };
+      "org/gnome/desktop/background" = {
+        picture-uri = "file:///home/dylan/.local/share/wallpaper.jpg";
+        picture-uri-dark = "file:///home/dylan/.local/share/wallpaper.jpg";
+      };
+    };
+
   };
 }

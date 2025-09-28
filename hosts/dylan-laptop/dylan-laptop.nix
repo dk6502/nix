@@ -25,7 +25,7 @@
       ];
     };
   };
-  
+
   disko.devices = {
     disk = {
       main = {
@@ -49,7 +49,7 @@
               };
             };
             linux = {
-              size = "500g";
+              size = "500G";
               content = {
                 type = "btrfs";
                 extraArgs = [ "-f" ];
@@ -75,5 +75,5 @@
       };
     };
   };
-  
+
 }

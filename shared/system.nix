@@ -2,6 +2,15 @@ let
   sources = import ../npins;
   pkgs = import sources.nixpkgs {};
 in {
+
+  environment.persistence."/persist".users.dylan = {
+    files = [
+      ".bashrc"
+      ".bash_profile"
+      ".bash_history"
+    ];
+  };
+
   programs.git = {
     enable = true;
     package = pkgs.gitFull;

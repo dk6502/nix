@@ -21,23 +21,56 @@ in
       ];
     };
   };
-  services.displayManager.sddm = {
+  services.displayManager.gdm = {
     enable = true;
   };
-  services.desktopManager.plasma6 = {
+  services.desktopManager.gnome = {
     enable = true;
   };
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    elisa
-    kate
-    gwenview
-    okular
-    konsole
+  environment.gnome.excludePackages = with pkgs; [
+    baobab
+    decibels
+    epiphany
+    gnome-text-editor
+    gnome-calculator
+    gnome-calendar
+    gnome-characters
+    gnome-clocks
+    gnome-disk-utility
+    geary
+    gnome-contacts
+    gnome-font-viewer
+    gnome-logs
+    gnome-maps
+    gnome-music
+    gnome-system-monitor
+    gnome-weather
+    loupe
+    gnome-connections
+    simple-scan
+    snapshot
+    totem
+    yelp
+  ];
+
+  programs.dconf.profiles.user.databases = [
+    {
+      settings = {
+        "org/gnome/desktop/interface" = {
+          icon-theme = "Papirus";
+          cursor-theme = "WhiteSur-cursors";
+          monospace-font-name = "Maple Mono";
+        };
+        "org/gnome/desktop/input-sources" = {
+          xkb-options = [ "ctrl:nocaps" ];
+        };
+      };
+    }
   ];
 
   fonts.packages = with pkgs; [
     maple-mono.truetype
-    inter
+    rubik
     iosevka
   ];
 
@@ -47,7 +80,8 @@ in
     firefox
     vesktop
     alacritty
-
+    papirus-icon-theme
+    whitesur-cursors
+    nautilus
   ];
-
 }
