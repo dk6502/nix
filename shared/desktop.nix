@@ -79,9 +79,9 @@ in
   environment.systemPackages = with pkgs; [
     firefox
     vesktop
-    alacritty
     papirus-icon-theme
     whitesur-cursors
     nautilus
+    thunderbird
   ];
 }

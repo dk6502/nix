@@ -15,7 +15,7 @@ in {
     enable = true;
     package = pkgs.gitFull;
     config = {
-      user.name = "dkrsix";
+      user.name = "dk6502";
       user.email = "dylank@posteo.com";
       credential = {
         helper = "manager";
