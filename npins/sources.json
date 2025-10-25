@@ -42,6 +42,22 @@
       "url": "https://github.com/nix-community/impermanence/archive/4b3e914cdf97a5b536a889e939fb2fd2b043a170.tar.gz",
       "hash": "04l16szln2x0ajq2x799krb53ykvc6vm44x86ppy1jg9fr82161c"
     },
+    "lem": {
+      "type": "GitRelease",
+      "repository": {
+        "type": "GitHub",
+        "owner": "lem-project",
+        "repo": "lem"
+      },
+      "pre_releases": false,
+      "version_upper_bound": null,
+      "release_prefix": null,
+      "submodules": false,
+      "version": "v2.3.0",
+      "revision": "38bae05a03bd6e6394819873fe5414b38da4753d",
+      "url": "https://api.github.com/repos/lem-project/lem/tarball/v2.3.0",
+      "hash": "0qkgs6xnbbnyjh9i1zp9l5iw6zj4hlb2b42b272pbmxw6pd3zp4a"
+    },
     "nixos-wsl": {
       "type": "GitRelease",
       "repository": {
@@ -87,7 +103,8 @@
       "submodules": false,
       "revision": "3258ed865f980af397ab766787964d2e8bdeb362",
       "url": null,
-      "hash": "1jzf4amsh926r9184awbx1103gjh970iqgkc5g96qdil41cgsjg9"
+      "hash": "1jzf4amsh926r9184awbx1103gjh970iqgkc5g96qdil41cgsjg9",
+      "frozen": true
     }
   },
   "version": 5

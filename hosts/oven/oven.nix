@@ -1,3 +1,7 @@
+let
+  sources = import ../../npins;
+  pkgs = import sources.nixpkgs { };
+in
 {
 
   fileSystems."/persist".neededForBoot = true;
@@ -10,6 +14,18 @@
 
   system.stateVersion = "25.11";
 
+  environment.systemPackages = [ pkgs.cifs-utils ];
+  fileSystems."/media" = {
+    device = "//u502897.your-storagebox.de/backup";
+    fsType = "cifs";
+    options =
+      let
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+      in
+      [ "${automount_opts},credentials=/etc/smb-secrets" ];
+  };
+
   environment.persistence."/persist" = {
     directories = [
       "/var/log"
@@ -17,6 +33,7 @@
     ];
     files = [
       "/etc/machine-id"
+      "/etc/smb-secrets"
     ];
     users.dylan = {
       directories = [
@@ -25,7 +42,7 @@
       ];
     };
   };
-  
+
   disko.devices = {
     disk = {
       main = {
@@ -72,10 +89,10 @@
       "/" = {
         fsType = "tmpfs";
         mountOptions = [
-          "size=200M"
+          "size=16G"
         ];
       };
     };
   };
-  
+
 }

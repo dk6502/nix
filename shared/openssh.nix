@@ -7,5 +7,6 @@
       AllowUsers = ["dylan"];
     };
   };
-}
 
+  services.fail2ban.enable = true;
+}

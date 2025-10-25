@@ -1,6 +1,7 @@
 let
   sources = import ../npins;
   pkgs = import sources.nixpkgs { };
+  lem = import sources.lem {};
 in
 {
   environment.persistence."/persist" = {
@@ -68,6 +69,10 @@ in
     }
   ];
 
+  services.pipewire = {
+    enable = true;
+    jack.enable = true;
+  };
   fonts.packages = with pkgs; [
     maple-mono.truetype
     rubik
@@ -83,5 +88,7 @@ in
     whitesur-cursors
     nautilus
     thunderbird
+    obs-studio
+    #(pkgs.callPackage sources.snix {}).snix.cli
   ];
 }
