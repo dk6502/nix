@@ -17,6 +17,8 @@
   };
   environment.persistence."/persist".directories = [
     "/var/lib/sonarr"
+    "/var/lib/prowlarr"
+    "/var/lib/radarr"
   ];
 
   services.radarr = {
@@ -35,9 +37,6 @@
       reverse_proxy localhost:7878
     '';
   };
-  environment.persistence."/persist".directories = [
-    "/var/lib/radarr"
-  ];
 
   services.prowlarr = {
     enable = true;
@@ -55,7 +54,4 @@
       reverse_proxy localhost:9696
     '';
   };
-  environment.persistence."/persist".directories = [
-    "/var/lib/prowlarr"
-  ];
 }
