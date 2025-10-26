@@ -2,7 +2,7 @@
   services.sonarr = {
     enable = true;
     settings = {
-      update.mechanism = "internal";
+      update.mechanism = "builtIn";
       server = {
         urlbase = "localhost";
         port = 8989;
