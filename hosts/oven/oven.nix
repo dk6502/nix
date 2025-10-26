@@ -20,7 +20,7 @@ in
     description = "Mount Samba Storage Box";
     serviceConfig = {
       Type = "oneshot";
-      ExecStart = "${pkgs.coreutils}/bin/mkdir -p /storage ; ${pkgs.cifs-utils}/bin/mount.cifs //u502897.your-storagebox.de/backup /storage -o credentials=/etc/smb-secrets";
+      ExecStart = "${pkgs.coreutils}/bin/mkdir -p /storage ; ${pkgs.cifs-utils}/bin/mount.cifs //u502897.your-storagebox.de/backup /storage -o dir_mode=0777,file_mode=0777,credentials=/etc/smb-secrets";
     };
     wantedBy = ["multi-user.target"];
   };
