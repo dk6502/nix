@@ -10,5 +10,6 @@ import (sources.nixpkgs + "/nixos/lib/eval-config.nix") {
     ./oven.nix
     ./caddy.nix
     ../../shared/openssh.nix
+    ./jellyfin.nix
   ];
 }
