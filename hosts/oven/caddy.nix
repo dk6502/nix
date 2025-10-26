@@ -6,10 +6,14 @@
     ];
   };
   services.caddy.enable = true;
-  services.caddy.virtualHosts."dkr6.com".extraConfig = ''
-    root * /srv/state/doc/snix_eval
-    file_server 
+  services.caddy.virtualHosts."dddk.dev".extraConfig = ''
+    file_server
   '';
+  services.caddy.virtualHosts = {
+    "jellyfin.dddk.dev".extraConfig = ''
+      reverse_proxy localhost:8096
+    '';
+  };
   networking.firewall = {
     allowedTCPPorts = [ 80 22 443 8080 ];
   };
