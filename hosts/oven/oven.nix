@@ -28,6 +28,7 @@ in
     directories = [
       "/var/log"
       "/var/lib/nixos"
+      "/var/db"
     ];
     files = [
       "/etc/machine-id"

@@ -1,11 +1,4 @@
 {config, lib, pkgs, ...}: {
-  environment.persistence."/persist" = {
-    directories = [
-      "/srv/audio/music"
-      "/srv/audio/playlists"
-      "/var/lib/navidrome"
-    ];
-  };
   services.navidrome = {
     enable = true;
     settings = {
