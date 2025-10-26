@@ -15,11 +15,15 @@ in
   system.stateVersion = "25.11";
 
   environment.systemPackages = [ pkgs.cifs-utils ];
-  fileSystems."/mnt/storage" = {
-    device = "//u502897.your-storagebox.de/backup";
-    fsType = "cifs";
-    options =
-      [ "x-systemd.automount" "noauto" "credentials=/etc/smb-secrets" ];
+  systemd.services.mount-storage-box = {
+    enable = true;
+    description = "Mount Samba Storage Box";
+    unitConfig = {
+      Type = "simple";
+    };
+    serviceConfig = {
+      ExecStart = "${pkgs.cifs-utils}/bin/mount.cifs //u502897.your-storagebox.de/backup -o credentials=/etc/smb-secrets";
+    };
   };
 
   environment.persistence."/persist" = {
