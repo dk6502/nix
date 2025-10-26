@@ -6,7 +6,7 @@ in
   services.qbittorrent = {
     enable = true;
     webuiPort = 6767;
-    
+
     serverConfig = {
       Preferences = {
         WebUI = {
@@ -16,5 +16,11 @@ in
       };
     };
   };
+  services.caddy.virtualHosts = {
+    "jellyfin.dddk.dev".extraConfig = ''
+      reverse_proxy localhost:6767
+    '';
+  };
+  
 
 }
