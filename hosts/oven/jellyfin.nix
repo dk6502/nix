@@ -7,4 +7,7 @@
       reverse_proxy localhost:8096
     '';
   };
+  environment.persistence."persist" = {
+    directories = ["/var/lib/jellyfin"];
+  };
 }
