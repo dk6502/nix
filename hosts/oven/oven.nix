@@ -18,11 +18,9 @@ in
   systemd.services.mount-storage-box = {
     enable = true;
     description = "Mount Samba Storage Box";
-    unitConfig = {
-      Type = "simple";
-    };
     serviceConfig = {
-      ExecStart = "${pkgs.cifs-utils}/bin/mount.cifs //u502897.your-storagebox.de/backup -o credentials=/etc/smb-secrets";
+      Type = "oneshot";
+      ExecStart = "${pkgs.coreutils}/bin/mkdir -p /storage ; ${pkgs.cifs-utils}/bin/mount.cifs //u502897.your-storagebox.de/backup /storage -o credentials=/etc/smb-secrets";
     };
   };
 
