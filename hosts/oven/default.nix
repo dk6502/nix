@@ -10,6 +10,7 @@ import (sources.nixpkgs + "/nixos/lib/eval-config.nix") {
     ./oven.nix
     ./caddy.nix
     ./qbittorrent.nix
+    ./sonarr.nix
     ../../shared/openssh.nix
     ./jellyfin.nix
   ];
