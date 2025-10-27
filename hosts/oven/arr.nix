@@ -55,4 +55,5 @@
       reverse_proxy localhost:9696
     '';
   };
+  systemd.services.prowlarr.serviceConfig.PrivateTmp= "no";
 }
