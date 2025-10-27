@@ -24,7 +24,7 @@
   fileSystems."/var/lib/prowlarr" = {
     device = "/persist/var/lib/prowlarr";
     options = ["bind"];
-  }
+  };
 
   services.radarr = {
     enable = true;
