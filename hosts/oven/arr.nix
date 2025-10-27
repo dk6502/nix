@@ -17,7 +17,7 @@
   };
   environment.persistence."/persist".directories = [
     "/var/lib/sonarr"
-    "/var/lib/prowlarr"
+#    "/var/lib/prowlarr"
     "/var/lib/radarr"
   ];
 
@@ -48,12 +48,11 @@
         bindaddress = "*";
       };
     };
-    dataDir = "/var/lib/prowlarr/prowlarr";
+    dataDir = "/var/lib/prowlarr";
   };
   services.caddy.virtualHosts = {
     "prowlarr.dddk.dev".extraConfig = ''
       reverse_proxy localhost:9696
     '';
   };
-  systemd.services.prowlarr.serviceConfig.PrivateTmp= "no";
 }
