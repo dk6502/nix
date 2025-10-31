@@ -13,5 +13,6 @@ import (sources.nixpkgs + "/nixos/lib/eval-config.nix") {
     ./arr.nix
     ../../shared/openssh.nix
     ./jellyfin.nix
+    ./komga.nix
   ];
 }
