@@ -25,9 +25,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "9f408dc51c8e8216a94379e6356bdadbe8b4fef9",
-      "url": "https://github.com/nix-community/home-manager/archive/9f408dc51c8e8216a94379e6356bdadbe8b4fef9.tar.gz",
-      "hash": "09bfkcr3h8idbsmp8x60d3pbjx616c8s7sw1m3m92g7lnwc6wx9f"
+      "revision": "4ac96eb21c101a3e5b77ba105febc5641a8959aa",
+      "url": "https://github.com/nix-community/home-manager/archive/4ac96eb21c101a3e5b77ba105febc5641a8959aa.tar.gz",
+      "hash": "05gvg4m841biv0gi1c52q34ra2r68vvz3b2hcy2kdcz0j655l94l"
     },
     "impermanence": {
       "type": "Git",
@@ -77,8 +77,8 @@
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre861972.88cef159e47c/nixexprs.tar.xz",
-      "hash": "0zscvr0qa3capyzhmp798hgncz2qy8ggm843y10wk35jk7p0174f"
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-25.11pre887438.a7fc11be66bd/nixexprs.tar.xz",
+      "hash": "1s71l3bk88wwd6b6j8q1i67vp7vzl9ap30pqkbgk7dhrwp1gsd1c"
     },
     "plasma-manager": {
       "type": "Git",
@@ -89,9 +89,9 @@
       },
       "branch": "trunk",
       "submodules": false,
-      "revision": "d47428e5390d6a5a8f764808a4db15929347cd77",
-      "url": "https://github.com/nix-community/plasma-manager/archive/d47428e5390d6a5a8f764808a4db15929347cd77.tar.gz",
-      "hash": "0akxlh7nb5alqfx5brpyal1cq9n104hcib8vq7czsp90x3lsdmn9"
+      "revision": "27dfa61b64d0cdb8e4ba6f3aaa4d4e067d64cb5c",
+      "url": "https://github.com/nix-community/plasma-manager/archive/27dfa61b64d0cdb8e4ba6f3aaa4d4e067d64cb5c.tar.gz",
+      "hash": "0p71zjaiah4fkjzqrvv0wrkzxqd6qh8x9f5s0rsw6c5xnyqmxli4"
     },
     "snix": {
       "type": "Git",
