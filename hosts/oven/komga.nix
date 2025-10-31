@@ -1,5 +1,5 @@
 {
-  services.komga {
+  services.komga = {
     enable = true;
     settings.server.port = 6161;
   }
