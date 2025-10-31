@@ -53,7 +53,6 @@
         bindaddress = "*";
       };
     };
-    dataDir = "/var/lib/prowlarr/prowlarr";
   };
   services.caddy.virtualHosts = {
     "prowlarr.dddk.dev".extraConfig = ''
